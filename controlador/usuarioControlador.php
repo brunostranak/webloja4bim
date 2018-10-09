@@ -40,3 +40,5 @@ function visualizar($id) {
     $dados['usuario'] = pegarUsuarioPorId($id);
     exibir("usuario/visualizar", $dados);
 }
+
+function teste(){}
