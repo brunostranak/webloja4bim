@@ -12,3 +12,5 @@ require_once 'bibliotecas/auth.php';
 
 define('CONTROLADOR_PADRAO', 'produto');
 define('BASE_URL', 'http://localhost/webloja4bim/');
+
+dsdsdsdsdsd
