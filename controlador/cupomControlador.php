@@ -8,15 +8,14 @@
         extract($_POST);
         
 $valorP = 
-$percentual = 30;
-$valorcomDesconto = $valorP * ( 1 - $percentual / 100 );
+$desconto = 30;
+$valorcomDesconto = ($desconto*$produto/100););
     
 	
 
 }
 
 /** admin */
-
 
 function listar(){
 	$dados["categorias"]= pegarTodasCategorias ();
