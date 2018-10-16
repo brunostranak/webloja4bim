@@ -13,7 +13,7 @@
                     <h1 class="text-center">CARRINHO DE COMPRAS <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></h1>
                 </div>
                 <div class="panel-body">
-                <?php if (isset($produtos)) { ?>
+                <?php if (!empty($produtos)) { ?>
                     <table class="table">
                         <tr>
                             <th>IMAGEM</th>
@@ -24,14 +24,24 @@
                         </tr>   
                         <!-- products date -->
                         <?php 
-                            $i = 0;
+                            
                             foreach ($produtos as $produto) {
                         ?>
                             <tr>
                                 <td><img src="./imagens/<?=$produto['imagem']?>" id="lala">
                                 </td>
                                 <td><?= $produto['descricao'] ?></td>
-                                <td></td>
+                                <td><?php
+                                            for ($i = 0; $i < count($_SESSION["carrinho"]); $i++) {
+                                                if ($_SESSION["carrinho"][$i]["id"] == $produto['idProduto']) {
+                                                    
+                                                   echo $_SESSION["carrinho"][$i]["quantidade"];
+                                                }
+                                            }
+                                            
+                                           
+                                            ?>
+                                </td>
                                 <td>R$ <?= $produto["preco"] ; ?></td>
                                 <td><a href="<?='carrinho/deletar/' . $i?>">excluir</a></td>
                             </tr>
