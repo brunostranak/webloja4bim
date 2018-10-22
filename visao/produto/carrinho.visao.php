@@ -7,7 +7,13 @@
 
 <section class="container">
         <div class="row">
+<?php
+echo "<pre>";
+print_r($_SESSION["carrinho"]);
 
+
+
+?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="text-center">CARRINHO DE COMPRAS <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></h1>
@@ -24,7 +30,8 @@
                         </tr>   
                         <!-- products date -->
                         <?php 
-                            
+                        
+                        
                             foreach ($produtos as $produto) {
                         ?>
                             <tr>
@@ -43,11 +50,16 @@
                                             ?>
                                 </td>
                                 <td>R$ <?= $produto["preco"] ; ?></td>
-                                <td><a href="<?='carrinho/deletar/' . $i?>">excluir</a></td>
+                                <?=$produto["idProduto"];?>
+                            <br>
+                                <td><a href="./carrinho/deletar/<?=$produto["idProduto"];?>">excluir</a></td>
+                                
                             </tr>
                         <?php 
                             $i++;}
                             }else{
+                                
+                                
                                 echo "<h1 class='text-center'>Não há produtos existentes no seu carrinho!</h1>";
                             }
                         ?>
