@@ -36,9 +36,9 @@ foreach ($produtos as $produto) : ?>
 	<figcaption>
 <h3><?=$produto["sobre"];?></h3>
 <br>
-				<form action="./carrinho/adicionar/<?=$produto["idProduto"]?>">
+				<a href="./carrinho/adicionar/<?=$produto["idProduto"];?>">
                                 <div class="container"><button type="submit" class="book-now-btn">Jogar no Carrinho</button></div>
-                            </form>
+                                </a>
 
 
 <br>
