@@ -1,6 +1,7 @@
 <?php
 require "modelo/produtoModelo.php";
  
+
 //http://localhost/app/carrinho
 function index()
 {
@@ -11,7 +12,7 @@ function index()
         }
 
         $dados["produtos"] = $produtosCarrinho;
-        exibir("carrinho/listar", $dados);
+        exibir("produto/carrinho", $dados);
     } else {
         echo "Nao existem produtos no carrinho!";
     }
@@ -40,11 +41,16 @@ function adicionar($id)
         $produto["quantidade"]=1;
 
         $_SESSION["carrinho"][] = $produto;
+        
+        
+        
+        
     }
-
+    
+    redirecionar("carrinho/index");
+    
  
-   
-    redirecionar("carrinho");
+    
 }
 
 //http://localhost/app/carrinho/deletar/2
