@@ -5,15 +5,10 @@
 }
 </style>
 
+
 <section class="container">
         <div class="row">
-<?php
-echo "<pre>";
-print_r($_SESSION["carrinho"]);
 
-
-
-?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="text-center">CARRINHO DE COMPRAS <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></h1>
@@ -50,7 +45,7 @@ print_r($_SESSION["carrinho"]);
                                             ?>
                                 </td>
                                 <td>R$ <?= $produto["preco"] ; ?></td>
-                                <?=$produto["idProduto"];?>
+                                
                             <br>
                                 <td><a href="./carrinho/deletar/<?=$produto["idProduto"];?>">excluir</a></td>
                                 
@@ -66,12 +61,17 @@ print_r($_SESSION["carrinho"]);
 
                     </table>
                 </div>
-
+<h1> Total da compra </h1>
+<?= $total;?>
                 <div class="panel-footer">
                     <div class="col-lg-10">
                         <div class="row">
                         </div>
                     </div>
+                    
+                    
+                    
+                    
                     <a href="#" class="btn btn-primary" role="button">COMPRAR</a>
                 </div>
 
