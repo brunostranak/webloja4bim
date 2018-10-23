@@ -7,11 +7,18 @@ function index()
 {
     if (isset($_SESSION["carrinho"])) {
         $produtosCarrinho = array();
-        foreach ($_SESSION["carrinho"] as $produtoID) {
-            $produtosCarrinho[] = pegarProdutoPorId($produtoID["id"]);
+        $soma=0;
+        foreach ($_SESSION["carrinho"] as $produtoSessao) {
+            $produtoBanco = pegarProdutoPorId($produtoSessao["id"]);
+            $produtosCarrinho[] = $produtoBanco; 
+            $aux= $produtoSessao["quantidade"]*$produtoBanco["preco"];
+            $soma= $soma + $aux;
         }
+        
+       
 
         $dados["produtos"] = $produtosCarrinho;
+        $dados["total"] = $soma;
         exibir("produto/carrinho", $dados);
     } else {
         echo "Nao existem produtos no carrinho!";
@@ -56,9 +63,24 @@ function adicionar($id)
 //http://localhost/app/carrinho/deletar/2
 function deletar($index)
 {
-    unset($_SESSION["carrinho"][$index]);
+    
+    
+    foreach($_SESSION["carrinho"] as $key => $produto){
+        
+     
+       if($index==$produto["id"]){
+           echo "deu certo";
+           
+           echo $produto["id"];
+           unset ($_SESSION["carrinho"][$key]);
+       }
+       
+    }
+    
     $_SESSION["carrinho"] = array_values($_SESSION["carrinho"]);
     redirecionar("carrinho/index");
+    
+    
 }
 
 
