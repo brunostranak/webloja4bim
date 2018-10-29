@@ -72,7 +72,7 @@
                     
                     
                     
-                    <a href="#" class="btn btn-primary" role="button">COMPRAR</a>
+                    <a href="./localizacao/" class="btn btn-primary" role="button">COMPRAR</a>
                 </div>
 
             </div>
