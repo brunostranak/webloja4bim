@@ -18,11 +18,10 @@
                 <?php if (!empty($produtos)) { ?>
                     <table class="table">
                         <tr>
-                            <th>IMAGEM</th>
+                            
                             <th>PRODUTO</th>
                             <th>QUANTIDADE</th>
                             <th>PREÇO</th>
-                            <th>Excluir</th>
                             <th>Subtotal</th>
                         </tr>   
                         <!-- products date -->
@@ -30,8 +29,7 @@
                         foreach ($produtos as $produto) {
                             ?>
                             <tr>
-                                <td><img src="./imagens/<?= $produto['imagem'] ?>" id="lala">
-                                </td>
+                                
                                 <td><?= $produto['descricao'] ?></td>
                                 <td><?php
                                     for ($i = 0; $i < count($_SESSION["carrinho"]); $i++) {
@@ -43,10 +41,6 @@
                                     ?>
                                 </td>
                                 <td>R$ <?= $produto["preco"]; ?></td>
-
-                            <br>
-                            <td><a href="./carrinho/deletar/<?= $produto["idProduto"]; ?>">excluir</a></td>
-
                             <td> <?= $total["subtotal"]; ?></td>
 
 
@@ -57,7 +51,7 @@
                     } else {
 
 
-                        echo "<h1 class='text-center'>Não há produtos existentes no seu carrinho!</h1>";
+                       echo "n tem nada";
                     }
                     ?>
 
@@ -80,6 +74,7 @@
     </div>
 </section>
 <?php
+die();
 $preco_original = $qr_l["preco_original"]; // Preço Original do produto
 $desconto = $qr_l["desconto"]; // A porcentagem que você quer descontar
 //calculo do desconto
