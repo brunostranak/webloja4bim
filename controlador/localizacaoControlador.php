@@ -1,22 +1,22 @@
 <?php
+require "modelo/localizacaoModelo.php";
+
 
 function index(){
     
     
-    exibir("produto/localizacao");
-}
-
-function adicionar(){
+    
     
     if (ehPost()) {
         extract($_POST);
-
         
-        redirecionar("produto/index");
+        adicionar($_SESSION["idUser"],$pais,$estado,$cidade,$endereco,$numero);
+        exibir("produto/cupom");
+        
     } else {
-    	$dados["localizacoes"]= 
+    	
 
-        exibir("produto/localizacao",$dados);
+        exibir("produto/localizacao");
     }
     
 }
