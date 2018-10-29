@@ -12,6 +12,7 @@ function authLogin($login, $passwd) {
     $usuario = VerificarLogin($login, $passwd);
 
     if ($usuario) {
+        $_SESSION["idUser"]= $usuario["idCliente"];
         $_SESSION["auth"] = array("user" => $usuario, "role" => "user");
         return true;
     }
