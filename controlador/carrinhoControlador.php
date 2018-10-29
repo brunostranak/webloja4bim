@@ -20,6 +20,7 @@ function index()
         $dados["produtos"] = $produtosCarrinho;
         $dados["total"] = $soma;
         exibir("produto/carrinho", $dados);
+        
     } else {
         echo "Nao existem produtos no carrinho!";
     }
