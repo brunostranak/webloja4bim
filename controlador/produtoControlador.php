@@ -21,6 +21,7 @@ function index(){
 $dados["produtos"]=pegar5Produtos();
 $dados["categorias"]= pegarTodasCategorias();
 
+
 exibir ("produto/listar", $dados);
 
 

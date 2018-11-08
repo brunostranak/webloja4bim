@@ -33,7 +33,7 @@ function pegar5Produtos() {
 function pegarProdutoPorId($id) {
     $sql = "SELECT * FROM tblproduto WHERE idProduto= $id";
     $resultado = mysqli_query(conn(), $sql);
-    $produto = mysqli_fetch_array($resultado);
+    $produto = mysqli_fetch_assoc($resultado);
     return $produto;
 }
 

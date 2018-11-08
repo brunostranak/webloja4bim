@@ -22,6 +22,6 @@ function listar(){
 	exibir('produto/listar', $dados);
 
 }
-\\
+
 
 ?>
