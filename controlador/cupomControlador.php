@@ -1,15 +1,28 @@
 <?php
 
-/** admin */
+require("modelo/cupomModelo.php");
 
-/*function desconto(){
+
+function index(){
+    
+    exibir("produto/cupom2");
+}
+function desconto(){
 
 	if (ehPost()) {
         extract($_POST);
         
-$valorP = 
-$desconto = 30;
-$valorcomDesconto = ($desconto*$produto/100););
+        $dadoscupom= verificarCupom($cupom);
+        
+        if(!empty($dadoscupom)){
+            $dados=$dadoscupom;
+            
+        exibir("produto/cupom2",$dados);
+        }else{
+            
+        exibir("produto/cupom2"); 
+        }
+        }
     
 	
 
@@ -17,11 +30,7 @@ $valorcomDesconto = ($desconto*$produto/100););
 
 /** admin */
 
-function listar(){
-	$dados["categorias"]= pegarTodasCategorias ();
-	exibir('produto/listar', $dados);
 
-}
 
 
 ?>

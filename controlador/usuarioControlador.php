@@ -1,7 +1,7 @@
 <?php
 
 require "modelo/usuarioModelo.php";
-
+require "modelo/localizacaoModelo.php";
 
 function index() {
     $dados["usuarios"] = pegarTodosUsuarios();

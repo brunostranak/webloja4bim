@@ -11,7 +11,9 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1 class="text-center">CARRINHO DE COMPRAS <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></h1>
+                    <h1 class="text-center">CARRINHO DE COMPRAS
+                    <img width='50px' height='50px' src='./imagens/carrinho.png'>
+                    </h1>
                 </div>
                 <div class="panel-body">
                 <?php if (!empty($produtos)) { ?>
@@ -61,8 +63,8 @@
 
                     </table>
                 </div>
-<h1> Total da compra </h1>
-<?= $total;?>
+<h1> Subtotal:</h1>
+<h2><?= "R$ ".$total;?><h2>
                 <div class="panel-footer">
                     <div class="col-lg-10">
                         <div class="row">
@@ -72,7 +74,7 @@
                     
                     
                     
-                    <a href="./localizacao/" class="btn btn-primary" role="button">COMPRAR</a>
+                    <a href="./cupom/index" class="btn btn-primary" role="button">COMPRAR</a>
                 </div>
 
             </div>

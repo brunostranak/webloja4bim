@@ -1,7 +1,7 @@
 <?php
 
 require "modelo/cadastroModelo.php";
-
+require "modelo/localizacaoModelo.php";
 /** anon */
 function index (){
 
@@ -16,6 +16,8 @@ function cadastrar (){
         extract($_POST);
 $dtNasc= $ano."-".$mes."-".$dia;
         alert(cadastrarUsuario($nome, $dtNasc ,$email, $senha));
+        
+        
         redirecionar("login/index");
     } else {
 
@@ -32,6 +34,7 @@ function informacoes($id){
 
         $dtNasc= $ano."-".$mes."-".$dia;
         alert(editarUsuario($id, $nome, $email, $dtNasc, $senha));
+        adicionar($_SESSION["idUser"],$pais,$estado,$cidade,$endereco,$numero);
         redirecionar("produto/index");
     } else {
        $dados["usuario"]=pegarUsuarioPorId($id);

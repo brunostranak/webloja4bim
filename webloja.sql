@@ -48,5 +48,34 @@ FOREIGN KEY (idCliente) REFERENCES tblCliente (idCliente)
 
 ) engine = innodb;
 
+CREATE TABLE tblcupom(
+idCupom INT AUTO_INCREMENT,
+cupom VARCHAR(8),
+desconto INT,
+decimaldesc FLOAT,
+
+PRIMARY KEY(idCupom)
+
+
+
+) engine = innodb;
+
+CREATE TABLE tblpedido(
+idPedido INT AUTO_INCREMENT,
+idCliente INT,
+idLocal INT,
+idProduto INT,
+nomeProduto VARCHAR(60),
+quantidadeProduto INT,
+valorPedido FLOAT,
+
+PRIMARY KEY(idPedido),
+FOREIGN KEY (idCliente) REFERENCES tblCliente (idCliente),
+FOREIGN KEY (idLocal) REFERENCES tbllocal (idLocal),
+FOREIGN KEY (idProduto) REFERENCES tblProduto (idProduto)
+
+
+) engine = innodb;
+
 
 

@@ -8,7 +8,7 @@
 </style>
 
 
-<section class="container">
+<div class="container">
     <div class="row">
 
         <div class="panel panel-default">
@@ -17,16 +17,14 @@
             <div class="panel-body">
 
 
-                <?php
-                print_r($_SESSION["carrinho"]);
-                ?>
+                
                 
                     <table class="table">
                         <tr>
 
                             <th>PRODUTO</th>
                             <th>QUANTIDADE</th>
-                            <th>PREÇO</th>
+                            <th>PREÇO UN.</th>
 
                         </tr>  
                         
@@ -34,9 +32,10 @@
                         <!-- products date -->
 
     <?php
+    //morrer($_SESSION);
     $total = 0;
     foreach ($produtos as $produto) {
-        $total += $produto["preco"];
+        
         ?>
                         <tr>
                             <td> <?= $produto["descricao"]; ?></td>
@@ -45,6 +44,8 @@
                                 if ($_SESSION["carrinho"][$i]["id"] == $produto['idProduto']) {
 
                                     echo $_SESSION["carrinho"][$i]["quantidade"];
+                                    $total+= $_SESSION["carrinho"][$i]["quantidade"]*$produto["preco"];
+                                   
                                 }
                             }
                             ?>
@@ -55,15 +56,16 @@
             
 
 
-                        <h1> Sub-total: </h1>
-                            <?= $total; ?>
-
-
+                        <h1> Subtotal: </h1>
+                        <h2> <?=  "R$ ".$total;  ?> </h2>
 
 
                         
+                        
+                        
+                        
                     </div>
-                    <
+                    
                     <div class="panel-footer">
                         <div class="col-lg-10">
                             <div class="row">
@@ -73,21 +75,11 @@
 
 
 
-                        <a href="./localizacao/" class="btn btn-primary" role="button">FINALIZAR PEDIDO</a>
+                        <a href="" class="btn btn-primary" role="button">FINALIZAR PEDIDO</a>
                     </div>
 
                 </div>
             </div>
-        </section>
-        <?php
-        die();
-        $preco_original = $qr_l["preco_original"]; // Preço Original do produto
-        $desconto = $qr_l["desconto"]; // A porcentagem que você quer descontar
-//calculo do desconto
-        $calculo = ($preco_original) * ($desconto) / 100; //Multiplicação do valor e desconto dividido por 100
-        $valor = ($preco_original) - ($calculo); // Para não negativar eu fiz essa subtração ai
-//Aqui para não termos aqueles problemas de casas decimais
-        $preco_original2 = number_format($preco_original, 2, ',', ' ');
-        $valor2 = number_format($valor, 2, ',', ' ');
-        ?>
+</div>
+     
 
