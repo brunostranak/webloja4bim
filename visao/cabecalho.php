@@ -27,6 +27,7 @@
 
                                 <li><a data-hover="Produtos"  href="./produto/listar"><span>Produtos</span></a></li>
                                 <li><a data-hover="Categoria"  href="./categoria"><span>Categoria</span></a></li>
+                                <li><a data-hover="Cupons"  href="./cupom/listarCupons"><span>Cupons</span></a></li>
 
                                 <?php
                                 if (isset($_SESSION["auth"])) {
@@ -43,7 +44,7 @@
                                 }
                                 ?>
 
-                                <li><a href='./carrinho/index'   <span>Carrinho <?="(".count($_SESSION["carrinho"]).")";?></span></a> </li>
+                                <li><a href='./carrinho/index'   <span>Carrinho <?= "(".$_SESSION["quantcarrinho"].")"; ?></span></a> </li>
                                 <li><form action="./produto/buscar" method="post"> <input type="text" name="produto" placeholder="Busque"> </form> </li>
                             </ul>
 

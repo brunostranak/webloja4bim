@@ -5,10 +5,12 @@ require "modelo/produtoModelo.php";
 //http://localhost/app/carrinho
 function index()
 {
+    $_SESSION["quantcarrinho"]=0;
     if (isset($_SESSION["carrinho"])) {
         $produtosCarrinho = array();
         $soma=0;
         foreach ($_SESSION["carrinho"] as $produtoSessao) {
+            $_SESSION["quantcarrinho"]+= $produtoSessao["quantidade"];
             $produtoBanco = pegarProdutoPorId($produtoSessao["id"]);
             $produtosCarrinho[] = $produtoBanco; 
             $aux= $produtoSessao["quantidade"]*$produtoBanco["preco"];
@@ -16,13 +18,13 @@ function index()
         }
         
        
-
+        
         $dados["produtos"] = $produtosCarrinho;
         $dados["total"] = $soma;
         exibir("produto/carrinho", $dados);
         
     } else {
-        echo "Nao existem produtos no carrinho!";
+        exibir("produto/carrinho");
     }
 }
 

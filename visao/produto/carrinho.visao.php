@@ -64,7 +64,7 @@
                     </table>
                 </div>
 <h1> Subtotal:</h1>
-<h2><?= "R$ ".$total;?><h2>
+<h2><?php if(isset($_SESSION["carrinho"])){ echo "R$ ".$total;}?><h2>
                 <div class="panel-footer">
                     <div class="col-lg-10">
                         <div class="row">
@@ -74,7 +74,7 @@
                     
                     
                     
-                    <a href="./cupom/index" class="btn btn-primary" role="button">COMPRAR</a>
+                    <a href="./localizacao/index" class="btn btn-primary" role="button">PRÓXIMA ETAPA</a>
                 </div>
 
             </div>

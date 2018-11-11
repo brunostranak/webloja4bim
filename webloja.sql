@@ -36,11 +36,11 @@ FOREIGN KEY (idCategoria) REFERENCES tblCategoria (idCategoria)
 CREATE TABLE tblLocal(
 idLocal INT AUTO_INCREMENT,
 idCliente INT,
-Pais VARCHAR(60),
-Estado VARCHAR(60),
-Cidade VARCHAR(60),
-Endereco VARCHAR(60),
-Numero VARCHAR(10),
+pais VARCHAR(60),
+estado VARCHAR(60),
+cidade VARCHAR(60),
+endereco VARCHAR(60),
+numero VARCHAR(10),
 
 PRIMARY KEY(idLocal),
 FOREIGN KEY (idCliente) REFERENCES tblCliente (idCliente)
@@ -64,15 +64,29 @@ CREATE TABLE tblpedido(
 idPedido INT AUTO_INCREMENT,
 idCliente INT,
 idLocal INT,
-idProduto INT,
-nomeProduto VARCHAR(60),
-quantidadeProduto INT,
 valorPedido FLOAT,
+dtPedido DATE,
 
 PRIMARY KEY(idPedido),
 FOREIGN KEY (idCliente) REFERENCES tblCliente (idCliente),
-FOREIGN KEY (idLocal) REFERENCES tbllocal (idLocal),
-FOREIGN KEY (idProduto) REFERENCES tblProduto (idProduto)
+FOREIGN KEY (idLocal) REFERENCES tbllocal (idLocal)
+
+
+
+) engine = innodb;
+
+
+CREATE TABLE tblitempedido(
+idItempedido INT AUTO_INCREMENT,
+idProduto INT,
+quantidade FLOAT,
+valoritem FLOAT,
+idPedido INT,
+
+PRIMARY KEY(idItempedido),
+FOREIGN KEY (idProduto) REFERENCES tblproduto (idProduto),
+FOREIGN KEY (idPedido) REFERENCES tblpedido (idPedido)
+
 
 
 ) engine = innodb;
