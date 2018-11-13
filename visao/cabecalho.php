@@ -44,7 +44,7 @@
                                 }
                                 ?>
 
-                                <li><a href='./carrinho/index'   <span>Carrinho <?= "(".$_SESSION["quantcarrinho"].")"; ?></span></a> </li>
+                                <li><a href='./carrinho/index'   <span>Carrinho <?php if(isset($_SESSION["carrinho"])){ echo "(".$_SESSION["quantcarrinho"].")";} ?></span></a> </li>
                                 <li><form action="./produto/buscar" method="post"> <input type="text" name="produto" placeholder="Busque"> </form> </li>
                             </ul>
 
