@@ -59,11 +59,11 @@
 
                 <?php
                 echo "<h3>";
-                echo $localizacao["Endereco"] . ", " . $localizacao["Numero"];
+                echo $localizacao["endereco"] . ", " . $localizacao["numero"];
                 echo "<br>";
-                echo $localizacao["Cidade"] . " - " . $localizacao["Estado"];
+                echo $localizacao["cidade"] . " - " . $localizacao["estado"];
                 echo "<br>";
-                echo $localizacao["Pais"];
+                echo $localizacao["pais"];
                 echo "</h3>";
                 echo "<br>";
                 ?>
