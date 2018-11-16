@@ -78,7 +78,19 @@
                     <br>
                     <br>
                     <br>
-                    <?php if(!empty($cupom)){echo "Você ativou um cupom de ".$cupom["desconto"]."% "."de desconto";}else{ echo "Cupom inválido!";}?>
+                    <?php
+                    
+                    if(isset($cupom)){
+                    if ($cupom<>"Cupom inválido!") {
+                        
+                            echo "Você ativou um cupom de " . $cupom["desconto"] . "% " . "de desconto";
+                        } else {
+                            echo $cupom;
+                        }
+                    }
+                        
+                    
+                    ?>
                     <br>
                     <br>
                     <button type="submit" class="btn btn-primary">ATIVAR</button>
@@ -90,11 +102,14 @@
                 <br>
                 <h1> Subtotal: <?= "R$ " . number_format($total,2,',','.'); ?> </h1>
                 
-                <?php if(!empty($cupom)){ ?>
+                <?php if(!empty($cupom)){
+                    if($cupom<>"Cupom inválido!"){
+                        ?>
                 <h1> Desconto: <?= "- R$ " . number_format( ($cupom["decimaldesc"]*$total), 2, ',', '.'); ?> </h1>
                 <?php $final= number_format(($total - ($cupom["decimaldesc"]*$total)), 2, ',', '.'); ?>
                 <h1> Total: <?= "R$ ".$final; ?> </h1>
-                <?php }else{ $final= number_format($total,2,',','.');}?>
+                <?php }else{
+                    $final= number_format($total,2,',','.');}}else{ $final= number_format($total,2,',','.'); }?>
                 <br>
                 <br>
                 <br>
@@ -123,7 +138,7 @@
 
 
                 <button type="submit" class="btn btn-primary" role="button">FINALIZAR PEDIDO</button>
-            </form>
+            
             </div>
 
         </div>

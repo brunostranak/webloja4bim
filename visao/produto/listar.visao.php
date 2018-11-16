@@ -44,15 +44,32 @@
 
                 <br>
             </figcaption>
+            
+            <?php
+            if(isset($_SESSION["auth"])){
+                if($_SESSION["auth"]["role"]=="admin"){
+                    ?>
+                
+            
             <a href="./produto/deletar/<?= $produto["idProduto"] ?>">deletar</a>
             <a href="./produto/editar/<?= $produto["idProduto"] ?>">editar </a>
         </figure>
         <br>
         <br>
-
+            <?php }} ?>
     <?php endforeach;
 }; ?>
+        
+        
+         <?php
+         if(isset($_SESSION["auth"])){
+                if($_SESSION["auth"]["role"]=="admin"){
+                    ?>
 <a href="./produto/adicionar">adicionar </a>
+         <?php }} ?>
+
+
+    
 </div>
 
 

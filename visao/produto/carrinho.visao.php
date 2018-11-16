@@ -73,8 +73,9 @@
                     
                     
                     
-                    
+                    <?php if(!empty($_SESSION["carrinho"])){ ?>
                     <a href="./localizacao/index" class="btn btn-primary" role="button">PRÓXIMA ETAPA</a>
+                    <?php } ?>
                 </div>
 
             </div>

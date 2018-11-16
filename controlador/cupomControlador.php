@@ -41,6 +41,8 @@ function desconto(){
     
         if(!empty($dadoscupom)){
             $dados["cupom"]=$dadoscupom;
+        }else{
+            $dados["cupom"]= "Cupom inválido!";
         }
         
          

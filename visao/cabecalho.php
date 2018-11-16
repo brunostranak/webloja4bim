@@ -26,9 +26,21 @@
                                 <li><a  data-hover="Home" class="active" href="./produto/"><span>Home</span></a></li>
 
                                 <li><a data-hover="Produtos"  href="./produto/listar"><span>Produtos</span></a></li>
+                                <?php 
+                                if(isset($_SESSION["auth"])){
+                                if($_SESSION["auth"]["role"]=="admin"){
+                                    ?>
                                 <li><a data-hover="Categoria"  href="./categoria"><span>Categoria</span></a></li>
+                                <?php }} ?>
+                                
+                                <?php 
+                                if(isset($_SESSION["auth"])){
+                                if($_SESSION["auth"]["role"]=="admin"){ 
+                                    
+                                    ?>
                                 <li><a data-hover="Cupons"  href="./cupom/listarCupons"><span>Cupons</span></a></li>
-
+                                <?php }} ?>
+                                
                                 <?php
                                 if (isset($_SESSION["auth"])) {
                                     $registro = $_SESSION["auth"]["user"];

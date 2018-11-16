@@ -7,6 +7,7 @@ require "modelo/produtoModelo.php";
 
 
 function cadastrar($valorPedido){
+    
     extract($_POST);
     
     
@@ -19,6 +20,7 @@ function cadastrar($valorPedido){
     
     
     $registro = cadastrarPedido($idUser,$idLocal,$valorPedido,$dtPedido);
+    
     $idPedido= $registro["max(idPedido)"];
     
     
@@ -26,13 +28,24 @@ function cadastrar($valorPedido){
     
     foreach($_SESSION["carrinho"] as $produto){
     $produtoBanco=pegarProdutoPorId($produto["id"]);    
-    cadastrarItemPedido($produto["id"],$produto["quantidade"],$produtoBanco["preco"],$idPedido);
+    cadastrarItemPedido($produto["id"],$produto["quantidade"],$idPedido);
     
     }
     alert("Pedido efetuado com sucesso!");
     unset($_SESSION["carrinho"]);
     
     redirecionar("./produto/index");
+    
+    
+}
+
+
+function listar(){
+    
+    
+    
+   
+    exibir("cadastro/informacoes",$dados);
     
     
 }

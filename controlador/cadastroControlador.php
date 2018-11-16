@@ -2,6 +2,7 @@
 
 require "modelo/cadastroModelo.php";
 require "modelo/localizacaoModelo.php";
+require "modelo/pedidoModelo.php";
 /** anon */
 function index (){
 
@@ -28,6 +29,8 @@ $dtNasc= $ano."-".$mes."-".$dia;
 
 function informacoes($id){
 
+    $pedidos= listarPedidosPorId($_SESSION["idUser"]);
+    $dados["pedidos"]=$pedidos;
 
     if (ehPost()) {
         extract($_POST);

@@ -8,16 +8,12 @@ function index(){
     
     exibir("localizacao/formulario",$dados);
     
-    die();
+    
+    
+    
     
    
-        
-        for($i=0; $i< count($_SESSION["carrinho"]); $i++){
-        $dados["produtos"][$i]= pegarProdutoPorId($_SESSION["carrinho"][$i]["id"]);
-        }
-        
-        
-        exibir("produto/cupom",$dados);
+     
         }
         
 function adicionarLocalizacao (){

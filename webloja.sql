@@ -23,7 +23,7 @@ PRIMARY KEY(idCategoria)
 CREATE TABLE tblProduto(
 idProduto INT AUTO_INCREMENT,
 descricao VARCHAR(60),
-preco FLOAT,
+preco FLOAT(6,2),
 imagem VARCHAR (100),
 idCategoria INT,
 sobre VARCHAR(100),
@@ -64,7 +64,7 @@ CREATE TABLE tblpedido(
 idPedido INT AUTO_INCREMENT,
 idCliente INT,
 idLocal INT,
-valorPedido FLOAT,
+valorPedido FLOAT(6,2),
 dtPedido DATE,
 
 PRIMARY KEY(idPedido),
@@ -79,8 +79,7 @@ FOREIGN KEY (idLocal) REFERENCES tbllocal (idLocal)
 CREATE TABLE tblitempedido(
 idItempedido INT AUTO_INCREMENT,
 idProduto INT,
-quantidade FLOAT,
-valoritem FLOAT,
+quantidade INT,
 idPedido INT,
 
 PRIMARY KEY(idItempedido),

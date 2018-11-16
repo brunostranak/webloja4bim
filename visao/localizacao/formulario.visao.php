@@ -213,11 +213,11 @@
 
         </select>
         <br>
-        Cidade: <input class="form-control" type="text" name="cidade" value="<?= $localidades['Cidade']; ?>" required >
+        Cidade: <input class="form-control" type="text" name="cidade" value="<?= $localidades['cidade']; ?>" required >
         <br>
-        Endereço: <input class="form-control" type="text" name="endereco" value="<?= $localidades['Endereco']; ?>" required >
+        Endereço: <input class="form-control" type="text" name="endereco" value="<?= $localidades['endereco']; ?>" required >
         <br>
-        Número: <input class="form-control" type="number" name="numero" value="<?= $localidades['Numero']; ?>" required >
+        Número: <input class="form-control" type="number" name="numero" value="<?= $localidades['numero']; ?>" required >
         <br>
 
 

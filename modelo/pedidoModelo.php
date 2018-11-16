@@ -1,7 +1,7 @@
 <?php
 
 function cadastrarPedido($idCliente,$idLocal,$valorPedido,$dtPedido){
-    
+  
     $sql="INSERT INTO tblpedido (idCliente, idLocal, valorPedido, dtPedido) VALUES('$idCliente','$idLocal','$valorPedido','$dtPedido')";
     
     mysqli_query(conn(),$sql);
@@ -15,11 +15,30 @@ function cadastrarPedido($idCliente,$idLocal,$valorPedido,$dtPedido){
 }
 
 
-function cadastrarItemPedido ($idProduto,$quantidade,$preco,$idPedido){
+function cadastrarItemPedido ($idProduto,$quantidade,$idPedido){
     
-    $sql="INSERT INTO tblitempedido (idProduto, quantidade, valoritem, idPedido) VALUES('$idProduto','$quantidade','$preco','$idPedido')";
+    $sql="INSERT INTO tblitempedido (idProduto, quantidade, idPedido) VALUES('$idProduto','$quantidade','$idPedido')";
     
     mysqli_query(conn(), $sql);
     
 }
+
+function listarPedidosPorId($idCliente){
+    
+    
+    $sql="SELECT ped.idPedido, p.descricao, ped.valorPedido, ped.dtPedido, item.quantidade  
+          FROM tblpedido ped INNER JOIN tblitempedido item ON (ped.idPedido=item.idPedido)
+        INNER JOIN tblproduto p ON (p.idProduto=item.idProduto) INNER JOIN tblcliente c ON
+          (c.idCliente = ped.idCliente) WHERE c.idCliente = '$idCliente';";
+   
+    $resultado = mysqli_query(conn(), $sql);
+    while($pedido= mysqli_fetch_assoc($resultado)){
+        $pedidos[]= $pedido;
+    }
+    
+    
+    return $pedidos;
+}
+    
+
 
