@@ -87,5 +87,26 @@ function deletar($index)
 }
 
 
+function tirarUmProduto($id){
+    if (!isset($_SESSION["carrinho"])) {
+        $_SESSION["carrinho"] = array();
+    }
+
+    
+
+
+    for ($i=0; $i < count($_SESSION["carrinho"]); $i++) {
+        if ($_SESSION["carrinho"][$i]["id"] == $id) {
+            
+            $_SESSION["carrinho"][$i]["quantidade"]--;
+        }
+    }
+   
+    
+    redirecionar("carrinho/index");
+    
+}
+
+
 
 ?>

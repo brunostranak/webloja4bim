@@ -39,7 +39,14 @@
                                             for ($i = 0; $i < count($_SESSION["carrinho"]); $i++) {
                                                 if ($_SESSION["carrinho"][$i]["id"] == $produto['idProduto']) {
                                                     
-                                                   echo $_SESSION["carrinho"][$i]["quantidade"];
+                                                   
+                                                            ?>
+                                    
+                                    <a href="./carrinho/tirarUmProduto/<?=$_SESSION["carrinho"][$i]["id"]?>" class="btn btn-primary" role="button">-</a>
+                                        <input min="1"  type="int" value="<?=$_SESSION["carrinho"][$i]["quantidade"]?>">  
+                                     <a href="./carrinho/adicionar/<?=$_SESSION["carrinho"][$i]["id"]?>" class="btn btn-primary" role="button">+</a>
+                                                            <?php
+                                                  
                                                 }
                                             }
                                             
