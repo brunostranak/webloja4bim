@@ -94,7 +94,7 @@ function buscar (){
         
         $dados["produtos"]=buscarProduto($produto);
        
-        exibir("produto/busca",$dados);
+        exibir("produto/listar",$dados);
 
 
 }

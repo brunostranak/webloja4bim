@@ -30,6 +30,7 @@ function index() {
 /** anon */
 function logout() {
     authLogout();
+    unset($_SESSION["carrinho"]);
     alert("deslogado com sucesso!");
     redirecionar("produto");
 }

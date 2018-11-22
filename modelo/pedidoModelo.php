@@ -23,21 +23,37 @@ function cadastrarItemPedido ($idProduto,$quantidade,$idPedido){
     
 }
 
-function listarPedidosPorId($idCliente){
+function listarPedidos($idCliente){
     
     
-    $sql="SELECT ped.idPedido, p.descricao, ped.valorPedido, ped.dtPedido, item.quantidade  
+    $sql="SELECT * FROM tblpedido WHERE idCliente='$idCliente'";
+    
+    $resultado= mysqli_query(conn(),$sql);
+    
+    while($linha=mysqli_fetch_assoc($resultado)){
+        
+        $produtos["produtos"]= listarProdutosPedidosPorId($linha["idPedido"]);
+        $pedidos[]= array_merge_recursive($linha, $produtos);
+    }
+    
+    return $pedidos;
+}
+
+function listarProdutosPedidosPorId($idPedido){
+    
+    
+    $sql="SELECT p.imagem, p.preco, ped.idPedido, p.descricao, ped.valorPedido, ped.dtPedido, item.quantidade  
           FROM tblpedido ped INNER JOIN tblitempedido item ON (ped.idPedido=item.idPedido)
         INNER JOIN tblproduto p ON (p.idProduto=item.idProduto) INNER JOIN tblcliente c ON
-          (c.idCliente = ped.idCliente) WHERE c.idCliente = '$idCliente';";
+          (c.idCliente = ped.idCliente) WHERE ped.idPedido = '$idPedido';";
    
     $resultado = mysqli_query(conn(), $sql);
-    while($pedido= mysqli_fetch_assoc($resultado)){
-        $pedidos[]= $pedido;
+    while($produto= mysqli_fetch_assoc($resultado)){
+        $produtos[]= $produto;
     }
     
     
-    return $pedidos;
+    return $produtos;
 }
     
 

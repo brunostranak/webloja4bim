@@ -67,7 +67,7 @@ $sql = "UPDATE tblProduto SET descricao = '$descricao', preco = '$preco', imagem
 
 function buscarProduto($produto){
 
-$sql = "SELECT * FROM tblProduto WHERE descricao LIKE '$produto%';" ;
+$sql = "SELECT * FROM tblProduto WHERE descricao LIKE '%$produto%';" ;
     $resultado = mysqli_query($cnx = conn(), $sql);
     
 

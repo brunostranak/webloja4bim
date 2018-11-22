@@ -97,8 +97,9 @@ function tirarUmProduto($id){
 
     for ($i=0; $i < count($_SESSION["carrinho"]); $i++) {
         if ($_SESSION["carrinho"][$i]["id"] == $id) {
-            
+            if($_SESSION["carrinho"][$i]["quantidade"]>1 ){
             $_SESSION["carrinho"][$i]["quantidade"]--;
+            }
         }
     }
    

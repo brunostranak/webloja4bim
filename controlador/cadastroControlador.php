@@ -29,8 +29,9 @@ $dtNasc= $ano."-".$mes."-".$dia;
 
 function informacoes($id){
 
-    $pedidos= listarPedidosPorId($_SESSION["idUser"]);
-    $dados["pedidos"]=$pedidos;
+    if($pedidos = listarPedidos($_SESSION["idUser"])){
+        $dados["pedidos"] = $pedidos;
+    }
 
     if (ehPost()) {
         extract($_POST);
