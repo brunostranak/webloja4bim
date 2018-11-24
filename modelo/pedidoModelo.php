@@ -57,7 +57,7 @@ function listarProdutosPedidosPorId($idPedido){
 }
 
 
-function ativarTriggerEstoque($id,$quantidade){
+function ativarProcedureEstoque($id,$quantidade){
     
     
     $sql="call DecrementoEstoque($id ,$quantidade)";
@@ -67,6 +67,80 @@ function ativarTriggerEstoque($id,$quantidade){
     
     
 }
+
+
+function listarPedidosIntervaloData($dtInicio,$dtFim){
+    
+    $sql="SELECT * FROM tblpedido WHERE dtPedido>='$dtInicio' AND dtPedido<='$dtFim' ";
+    $registros=mysqli_query(conn(),$sql);
+    
+    while($pedido = mysqli_fetch_assoc($registros)){
+        
+        $produtos["produtos"]= listarProdutosPedidosPorId($pedido["idPedido"]);
+        $pedidos[]= array_merge_recursive($pedido, $produtos);
+    }
+    
+    
+    if(!empty($pedidos)){
+    return $pedidos;
+    }
+    
+}
+
+
+function listarPedidosLocalidade($local){
+    
+    $comando="SELECT * FROM tbllocal WHERE cidade='$local' OR estado='$local' ";
+    $resultados=mysqli_query(conn(),$comando);
+    
+    while($local = mysqli_fetch_assoc($resultados)){
+        
+        
+        $locais[]= $local;
+    }
+    
+    if(!empty($locais)){
+    foreach($locais as $local){
+        
+        
+    
+    $sql="SELECT * FROM tblpedido WHERE idLocal = $local[idLocal] ";
+    $registros=mysqli_query(conn(),$sql);
+    
+    while($pedido = mysqli_fetch_assoc($registros)){
+        
+        $produtos["produtos"]= listarProdutosPedidosPorId($pedido["idPedido"]);
+       
+        $pedidos[]= array_merge_recursive($pedido, $produtos);
+       
+        
+    }
+    
+    }
+    
+    
+    
+    for($i=0;$i< count($pedidos); $i++){
+       $idlocal= $pedidos[$i]['idLocal'];
+        $sql3="SELECT * FROM tbllocal WHERE idLocal = $idlocal  ";
+    $registros3=mysqli_query(conn(),$sql3);
+    $result= mysqli_fetch_assoc($registros3);
+    $pedidos[$i]["cidade"]= $result["cidade"];
+    $pedidos[$i]["estado"]= $result["estado"];
+    
+    }
+    
+    }
+    
+    
+    if(!empty($pedidos)){
+    return $pedidos;
+    }
+    
+}
+
+
+
     
 
 

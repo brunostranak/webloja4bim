@@ -6,6 +6,7 @@ require "modelo/produtoModelo.php";
 
 
 
+
 function cadastrar($valorPedido){
     
     extract($_POST);
@@ -30,7 +31,7 @@ function cadastrar($valorPedido){
     $produtoBanco=pegarProdutoPorId($produto["id"]);    
     cadastrarItemPedido($produto["id"],$produto["quantidade"],$idPedido);
     
-    ativarTriggerEstoque($produto["id"],$produto["quantidade"]);
+    ativarProcedureEstoque($produto["id"],$produto["quantidade"]);
     }
     
     alert("Pedido efetuado com sucesso!");
@@ -42,15 +43,10 @@ function cadastrar($valorPedido){
 }
 
 
-function listar(){
-    
-    
-    
-   
-    exibir("cadastro/informacoes",$dados);
-    
-    
-}
+
+
+
+
 
 
 ?>
