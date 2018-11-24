@@ -30,7 +30,9 @@ function cadastrar($valorPedido){
     $produtoBanco=pegarProdutoPorId($produto["id"]);    
     cadastrarItemPedido($produto["id"],$produto["quantidade"],$idPedido);
     
+    ativarTriggerEstoque($produto["id"],$produto["quantidade"]);
     }
+    
     alert("Pedido efetuado com sucesso!");
     unset($_SESSION["carrinho"]);
     

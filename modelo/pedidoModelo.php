@@ -55,6 +55,18 @@ function listarProdutosPedidosPorId($idPedido){
     
     return $produtos;
 }
+
+
+function ativarTriggerEstoque($id,$quantidade){
+    
+    
+    $sql="call DecrementoEstoque($id ,$quantidade)";
+    
+    mysqli_query(conn(),$sql);
+    
+    
+    
+}
     
 
 

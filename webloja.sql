@@ -27,6 +27,7 @@ preco FLOAT(6,2),
 imagem VARCHAR (100),
 idCategoria INT,
 sobre VARCHAR(100),
+qtEstoque INT,
 PRIMARY KEY(idProduto),
 FOREIGN KEY (idCategoria) REFERENCES tblCategoria (idCategoria)
 
@@ -89,6 +90,16 @@ FOREIGN KEY (idPedido) REFERENCES tblpedido (idPedido)
 
 
 ) engine = innodb;
+
+
+DELIMITER $$
+CREATE PROCEDURE DecrementoEstoque(IN idProd INT, IN quantidade INT )
+BEGIN
+
+UPDATE tblproduto SET qtEstoque = qtEstoque-quantidade WHERE idProduto = idProd; 
+
+END $$
+DELIMITER ;
 
 
 

@@ -16,12 +16,15 @@ function pegarTodosProdutos() {
 }
 
 function pegar5Produtos() {
-    $sql = "SELECT * FROM tblproduto WHERE idProduto<6";
+    
+    
+    $sql = "SELECT * FROM tblproduto";
     $resultado = mysqli_query(conn(), $sql);
     $produtos = array();
-
-    while ($produto = mysqli_fetch_assoc($resultado)) {
-        $produtos[] = $produto;
+    
+    for($i=0;$i<5;$i++){
+    $produto = mysqli_fetch_assoc($resultado); 
+    $produtos[] = $produto;
         
 
     }
@@ -37,12 +40,12 @@ function pegarProdutoPorId($id) {
     return $produto;
 }
 
-function adicionarProduto($descricao, $preco, $imagem, $idCategoria, $sobre) {
+function adicionarProduto($descricao, $preco, $imagem, $idCategoria, $sobre, $qtEstoque) {
 
    
 
-    $sql = "INSERT INTO tblproduto (descricao, preco, imagem, idCategoria, sobre) 
-			VALUES ('$descricao', '$preco', '$imagem[name]', '$idCategoria', '$sobre')";
+    $sql = "INSERT INTO tblproduto (descricao, preco, imagem, idCategoria, sobre, qtEstoque) 
+			VALUES ('$descricao', '$preco', '$imagem[name]', '$idCategoria', '$sobre', '$qtEstoque')";
     $resultado = mysqli_query($cnx = conn(), $sql);
     if(!$resultado) { die('Erro ao cadastrar produto' . mysqli_error($cnx)); }
     return 'Produto cadastrado com sucesso!';
@@ -57,8 +60,8 @@ function deletarProduto($id) {
             
 }
 
-function editarProduto($id,$descricao, $preco, $imagem, $idCategoria, $sobre){
-$sql = "UPDATE tblProduto SET descricao = '$descricao', preco = '$preco', imagem = '$imagem', idCategoria = '$idCategoria' , sobre ='$sobre' WHERE idProduto = $id";
+function editarProduto($id,$descricao, $preco, $imagem, $idCategoria, $sobre, $qtEstoque){
+$sql = "UPDATE tblProduto SET descricao = '$descricao', preco = '$preco', imagem = '$imagem', idCategoria = '$idCategoria' , sobre ='$sobre', qtEstoque='$qtEstoque' WHERE idProduto = $id";
     $resultado = mysqli_query($cnx = conn(), $sql);
     if(!$resultado) { die('Erro ao alterar Produto' . mysqli_error($cnx)); }
     return 'Produto alterado com sucesso!';

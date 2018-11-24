@@ -56,9 +56,8 @@
         </figure>
         <br>
         <br>
-            <?php }} ?>
-    <?php endforeach;
-}else{echo "Sem buscas correspondentes!"; echo "<br>";} ?>
+    <?php }} endforeach;} ?>
+    
         
         
          <?php

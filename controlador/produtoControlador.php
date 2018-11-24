@@ -37,7 +37,7 @@ function adicionar(){
             $caminho_imagem = "./imagens/" . $imagem["name"];
             move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
 
-        alert(adicionarProduto($descricao,$preco,$imagem,$categoria,$sobre));
+        alert(adicionarProduto($descricao,$preco,$imagem,$categoria,$sobre,$qtEstoque));
         redirecionar("produto/index");
     } else {
     	$dados["categorias"]= pegarTodasCategorias();
@@ -71,7 +71,7 @@ if (ehPost()) {
         $imagem=$imagem["name"];
       
       
-        alert(editarProduto($id,$descricao, $preco, $imagem, $categoria, $sobre));
+        alert(editarProduto($id,$descricao, $preco, $imagem, $categoria, $sobre, $qtEstoque));
         redirecionar("produto/index");
     } else {
         $dados['produtos'] = pegarProdutoPorId($id);
@@ -94,7 +94,7 @@ function buscar (){
         
         $dados["produtos"]=buscarProduto($produto);
        
-        exibir("produto/listar",$dados);
+        exibir("produto/busca",$dados);
 
 
 }
