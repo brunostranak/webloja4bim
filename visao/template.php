@@ -60,8 +60,9 @@ License URI: http://www.themevault.net/license/-->
     $URL_ATUAL= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     
 
-    if($URL_ATUAL=="http://localhost/noopmvc-master/produto/" || $URL_ATUAL== "http://localhost/noopmvc-master/"){
+    if($URL_ATUAL=="http://localhost/webloja4bim/produto/" || $URL_ATUAL== "http://localhost/webloja4bim/"){
     require "visao/produto/carousel.visao.php";
+    echo "<br>";
 }
 ?>
 
