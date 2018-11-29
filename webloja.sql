@@ -54,7 +54,6 @@ idCupom INT AUTO_INCREMENT,
 cupom VARCHAR(8),
 desconto INT,
 decimaldesc FLOAT,
-
 PRIMARY KEY(idCupom)
 
 
@@ -153,11 +152,8 @@ INSERT INTO `tblitempedido` (`idItempedido`, `idProduto`, `quantidade`, `idPedid
 
 
 
-DELIMITER $$
-CREATE PROCEDURE DecrementoEstoque(IN idProd INT, IN quantidade INT)
-BEGIN
-
-UPDATE tblproduto SET qtEstoque = qtEstoque-quantidade WHERE idProduto = idProd; 
+DELIMITER $$ CREATE PROCEDURE DecrementoEstoque(IN idProd INT, IN quantidade INT) 
+BEGIN UPDATE tblproduto SET qtEstoque = qtEstoque-quantidade WHERE idProduto = idProd; 
 
 END $$
 DELIMITER;
@@ -166,11 +162,31 @@ DELIMITER;
 
 
 
-CREATE OR replace view webloja.vw_faturamento As SELECT 
+CREATE OR replace view webloja.vw_faturamento_2018 As SELECT 
 SUM(valorPedido) FROM 
-tblpedido;
+tblpedido WHERE dtPedido BETWEEN '2018/01/01' and '2018/12/31';
 
 --PRECISA FAZER UMA TRIGGER--
+
+DELIMITER //
+CREATE TRIGGER trg_tblproduto
+AFTER UPDATE ON tblproduto
+FOR EACH ROW
+BEGIN
+INSERT INTO lg_tblproduto(USUARIO,DATA_HORA,TIPO,DADOS)
+VALUES(CURRENT_USER() ,NOW(),'UPDATE',
+CONCAT(
+old.idProduto,'#',
+old.descricao,'#',
+old.preco,'#',
+old.imagem,'#',
+old.idCategoria,'#',
+old.sobre,'#',
+old.qtEstoque
+)
+);
+END//
+
 
 
        
