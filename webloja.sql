@@ -94,10 +94,7 @@ FOREIGN KEY (idPedido) REFERENCES tblpedido (idPedido)
 
 
 
-CREATE OR replace view webloja.vw_teste As SELECT 
-c.idCliente, c.nmPessoa, count(p.idPedido) FROM 
-tblpedido p INNER JOIN tblcliente c ON (c.idCliente=p.idCliente) 
-order by count(p.idPedido);
+
 
 
 
@@ -164,6 +161,13 @@ UPDATE tblproduto SET qtEstoque = qtEstoque-quantidade WHERE idProduto = idProd;
 
 END $$
 DELIMITER;
+
+
+
+CREATE OR replace view webloja.vw_teste As SELECT 
+c.idCliente, c.nmPessoa, count(p.idPedido) FROM 
+tblpedido p INNER JOIN tblcliente c ON (c.idCliente=p.idCliente) 
+order by count(p.idPedido);
 
 
 
