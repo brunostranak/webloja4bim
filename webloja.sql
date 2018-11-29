@@ -164,12 +164,17 @@ DELIMITER;
 
 
 
+--PRECISA ARRUMAR ESSA VIEW--
 CREATE OR replace view webloja.vw_teste As SELECT 
 c.idCliente, c.nmPessoa, count(p.idPedido) FROM 
 tblpedido p INNER JOIN tblcliente c ON (c.idCliente=p.idCliente) 
 order by count(p.idPedido);
 
+--PRECISA FAZER UMA TRIGGER--
 
+
+       
+       
 
 
 
