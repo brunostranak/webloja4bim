@@ -166,7 +166,7 @@ CREATE OR replace view webloja.vw_faturamento_2018 As SELECT
 SUM(valorPedido) FROM 
 tblpedido WHERE dtPedido BETWEEN '2018/01/01' and '2018/12/31';
 
---PRECISA FAZER UMA TRIGGER--
+-- FAZER UMA TABELA LOG--
 
 DELIMITER //
 CREATE TRIGGER trg_tblproduto
